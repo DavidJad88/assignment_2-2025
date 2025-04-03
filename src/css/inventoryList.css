@@ -1,0 +1,57 @@
+.inventory-list {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: var(--spacing-large);
+}
+
+.list-item {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  background-color: var(--color-background-light);
+}
+
+.category-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-basis: 20%;
+}
+
+.category__icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 60%;
+  font-size: 64px;
+}
+
+.category__tools-container {
+  display: flex;
+  flex-basis: 40%;
+  gap: var(--spacing-small);
+  padding: var(--spacing-small);
+}
+
+.category__tools-container button {
+  width: 50%;
+  border: none;
+  font-size: var(--font-size-large);
+}
+.category__tools-container button:hover {
+  box-shadow: var(--box-shadow-base);
+}
+
+.description-container {
+  display: flex;
+  flex-basis: 40%;
+}
+
+.dosage-container {
+  display: flex;
+  flex-basis: 40%;
+}

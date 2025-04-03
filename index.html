@@ -1,13 +1,273 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <script
+      src="https://kit.fontawesome.com/f81d596e54.js"
+      crossorigin="anonymous"
+    ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Pharmacy Inventory System</title>
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/variables.css" />
+    <link rel="stylesheet" href="./src/css/inventoryList.css" />
+    <link rel="stylesheet" href="./src/css/header.css" />
+    <link rel="stylesheet" href="./src/css/form.css" />
+    <link rel="stylesheet" href="./src/css/deleteModal.css" />
+    <link rel="stylesheet" href="./src/css/footer.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <header>
+      <div class="header__icon-container">
+        <i class="fa-solid fa-house-medical fa-xl"></i>
+      </div>
+      <div class="header__heading-container">
+        <h1>Pharmaceutical Inventory Manager</h1>
+      </div>
+      <!-- <div class="add-button-container">
+        <button class="add-button">
+          <i class="fa-solid fa-circle-plus fa-2xl"></i>
+        </button>
+      </div> -->
+    </header>
+    <main>
+      <ul class="inventory-list">
+        <li class="list-item">
+          <div class="category-container">
+            <div class="category__icon-container">
+              <i class="fa-solid fa-syringe fa-flip-horizontal"></i>
+            </div>
+            <div class="category__tools-container">
+              <button class="edit-button">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+              <button class="delete-button">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+          <div class="description-container"></div>
+          <div class="dosage-container"></div>
+        </li>
+        <li class="list-item">
+          <div class="category-container">
+            <div class="category__icon-container">
+              <i class="fa-solid fa-pills"></i>
+            </div>
+            <div class="category__tools-container">
+              <button class="edit-button">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+              <button class="delete-button">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+          <div class="description-container"></div>
+          <div class="dosage-container"></div>
+        </li>
+        <li class="list-item">
+          <div class="category-container">
+            <div class="category__icon-container">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+            <div class="category__tools-container">
+              <button class="edit-button">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+              <button class="delete-button">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+          <div class="description-container"></div>
+          <div class="dosage-container"></div>
+        </li>
+      </ul>
+    </main>
+    <footer></footer>
+
+    <!-- form modal -->
+    <div class="form-modal">
+      <form class="form">
+        <div class="form__group">
+          <label for="medicine-name">Medicine Name</label>
+          <input
+            type="text"
+            name="medicine-name"
+            id="medicine-name"
+            maxlength="50"
+            class="form__medicine-name-input"
+            placeholder="Enter medicine name"
+          />
+        </div>
+        <div class="form__group">
+          <label for="manufacturer">Medicine Manufacturer</label>
+          <input
+            type="text"
+            name="manufacurer"
+            id="manufacturer"
+            maxlength="50"
+            class="form__manufacturer-input"
+            placeholder="Enter medicine manufacturer"
+          />
+        </div>
+        <div class="form__group">
+          <label for="expiration-date">Expiration Date</label>
+          <input
+            type="date"
+            name="expiration-date"
+            id="expiration-date"
+            class="form__expiration-date-input"
+            placeholder="Enter expiration date"
+          />
+        </div>
+        <div class="form__group">
+          <label for="medicine-quantity">Medicine Quantity</label>
+          <input
+            type="number"
+            name="medicine-quantity"
+            id="medicine-quantity"
+            class="form__medicine-quantity-input"
+            placeholder="Enter medicine quantity (full packets)"
+          />
+        </div>
+        <div class="form__group form__group--symptoms">
+          <fieldset>
+            <legend>Choose Symptoms the Medicine Treats</legend>
+            <div class="symptoms-grid">
+              <label>
+                Fever
+                <input
+                  type="checkbox"
+                  name="symptoms"
+                  id="fever"
+                  value="fever"
+                />
+              </label>
+              <label>
+                Inflammation
+                <input
+                  type="checkbox"
+                  name="symptoms"
+                  id="inflammation"
+                  value="inflammation"
+                />
+              </label>
+              <label>
+                Allergies
+                <input
+                  type="checkbox"
+                  name="symptoms"
+                  id="allergies"
+                  value="allergies"
+                />
+              </label>
+              <label>
+                Pain
+                <input type="checkbox" name="symptoms" id="pain" value="pain" />
+              </label>
+              <label>
+                Infection
+                <input
+                  type="checkbox"
+                  name="symptoms"
+                  id="infection"
+                  value="infection"
+                />
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="form__group">
+          <label for="administration-method"
+            >Choose Administration method</label
+          >
+          <div class="form__administration--radios">
+            <div>
+              <input
+                type="radio"
+                name="ingestion"
+                id="ingestion"
+                value="ingestion"
+              />
+              <label for="ingestion">Ingestion/Oral Administration</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="injection"
+                id="injection"
+                value="injection"
+              />
+              <label for="injection"
+                >Injection/Intravenous Administration</label
+              >
+            </div>
+            <div>
+              <input type="radio" name="topical" id="topical" value="topical" />
+              <label for="topical"
+                >Topical/Skin and membrane Administraton</label
+              >
+            </div>
+          </div>
+        </div>
+        <!-- dynamic form fields -->
+        <div class="form__administration-container">
+          <div class="form__group administration--ingestion">
+            <label for="ingestion-quantities">Pills per packet:</label>
+            <input
+              type="number"
+              name="ingestion-quantities"
+              id="ingestion-quantities"
+              step="2"
+            />
+          </div>
+        </div>
+        <p class="form__message">Please fill out medicine Name</p>
+        <div class="form__group administration--injection-topical">
+          <label for="injection/topical-quantities">Ml per container</label>
+          <input
+            type="number"
+            name="injection/topical-quantities"
+            id="injection/topical-quantities"
+            step="5"
+          />
+        </div>
+
+        <div class="form__tools-container">
+          <button class="add-button" type="submit">Add Medicine</button>
+          <button class="close-form-button" type="button">
+            Cancel Registration
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!--DELETE MODAL -->
+
+    <div class="delete-modal">
+      <div class="delete-container">
+        <div class="delete-message-container">
+          <p class="delete-message">sadfasd</p>
+        </div>
+        <div class="delete-tools-container">
+          <button class="confirm-delete-button">Confirm Delete</button>
+          <button class="cancel-delete-button">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- 
+          <i class="fa-solid fa-syringe"></i>
+          <i class="fa-solid fa-pills"></i>
+          <i class="fa-solid fa-droplet"></i>
+          <i class="fa-solid fa-circle-plus"></i>
+          <i class="fa-solid fa-pencil"></i>
+          <i class="fa-solid fa-trash-can"></i>
+      
+    -->
+
+    <script type="module" src="./src/js/app.js"></script>
   </body>
 </html>
