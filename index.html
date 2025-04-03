@@ -25,13 +25,13 @@
       <div class="header__heading-container">
         <h1>Pharmaceutical Inventory Manager</h1>
       </div>
-      <!-- <div class="add-button-container">
-        <button class="add-button">
-          <i class="fa-solid fa-circle-plus fa-2xl"></i>
-        </button>
-      </div> -->
     </header>
     <main>
+      <div class="add-button-container">
+        <button class="add-medicine-button">
+          <i class="fa-solid fa-circle-plus fa-8xl"></i>
+        </button>
+      </div>
       <ul class="inventory-list">
         <li class="list-item">
           <div class="category-container">
@@ -188,7 +188,7 @@
             <div>
               <input
                 type="radio"
-                name="ingestion"
+                name="administatration"
                 id="ingestion"
                 value="ingestion"
               />
@@ -197,7 +197,7 @@
             <div>
               <input
                 type="radio"
-                name="injection"
+                name="administration"
                 id="injection"
                 value="injection"
               />
@@ -206,7 +206,12 @@
               >
             </div>
             <div>
-              <input type="radio" name="topical" id="topical" value="topical" />
+              <input
+                type="radio"
+                name="administration"
+                id="topical"
+                value="topical"
+              />
               <label for="topical"
                 >Topical/Skin and membrane Administraton</label
               >
@@ -222,22 +227,27 @@
               name="ingestion-quantities"
               id="ingestion-quantities"
               step="2"
+              class="ingestion-quantities-input"
+            />
+          </div>
+
+          <div class="form__group administration--injection-topical">
+            <label for="injection-or-topical-quantities"
+              >Ml per container</label
+            >
+            <input
+              type="number"
+              name="injection-or-topical-quantities"
+              id="injection-or-topical-quantities"
+              step="5"
+              class="injection-or-topical-quantities"
             />
           </div>
         </div>
-        <p class="form__message">Please fill out medicine Name</p>
-        <div class="form__group administration--injection-topical">
-          <label for="injection/topical-quantities">Ml per container</label>
-          <input
-            type="number"
-            name="injection/topical-quantities"
-            id="injection/topical-quantities"
-            step="5"
-          />
-        </div>
+        <p class="form__validation-message"></p>
 
         <div class="form__tools-container">
-          <button class="add-button" type="submit">Add Medicine</button>
+          <button class="form-submit-button" type="submit">Add Medicine</button>
           <button class="close-form-button" type="button">
             Cancel Registration
           </button>

@@ -20,6 +20,20 @@ main {
   padding: var(--spacing-large);
 }
 
+.add-button-container {
+  width: 48px;
+  height: 48px;
+  position: fixed;
+  right: var(--spacing-medium);
+  bottom: var(--spacing-large);
+}
+
+.add-medicine-button {
+  font-size: 48px;
+  background: none;
+  border: none;
+}
+
 button {
   cursor: pointer;
 }
