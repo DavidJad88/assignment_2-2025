@@ -58,11 +58,6 @@ const formValidationMessage = document.querySelector(
   ".form__validation-message"
 );
 
-//DELETE MODAL
-
-const deleteModal = document.querySelector(".delete-modal");
-const cancelDeleteButton = document.querySelector(".camcel-delete-button");
-
 //EVENT LISTENERS
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -82,5 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     formSubmitButton,
     formValidationMessage
   );
-  Ui.closeDeleteModal(deleteModal, cancelDeleteButton);
+  Ui.closeDeleteModal();
 });
+
+form.addEventListener("submit", (e) => {});

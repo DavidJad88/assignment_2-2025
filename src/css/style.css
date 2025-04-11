@@ -21,10 +21,10 @@ main {
 }
 
 .add-button-container {
+  position: absolute;
   width: 48px;
   height: 48px;
-  position: fixed;
-  right: var(--spacing-medium);
+  right: var(--spacing-large);
   bottom: var(--spacing-large);
 }
 

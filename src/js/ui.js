@@ -35,7 +35,9 @@ class Ui {
     });
   }
 
-  static closeDeleteModal(deleteModal, cancelDeleteButton) {
+  static closeDeleteModal() {
+    const deleteModal = document.querySelector(".delete-modal");
+    const cancelDeleteButton = document.querySelector(".cancel-delete-button");
     cancelDeleteButton.addEventListener("click", () => {
       deleteModal.classList.remove("delete-modal--display");
     });
