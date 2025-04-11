@@ -19,7 +19,7 @@ class MedicineManager {
     pillsPerPacket
   ) {
     let medicine;
-    if ((administrationMethod = "ingestion")) {
+    if (administrationMethod === "ingestion") {
       medicine = new IngestionMedicine(
         name,
         manufacturer,
@@ -29,7 +29,7 @@ class MedicineManager {
         administrationMethod,
         pillsPerPacket
       );
-    } else if ((administrationMethod = "injection")) {
+    } else if (administrationMethod === "injection") {
       medicine = new InjectionMedicine(
         name,
         manufacturer,
@@ -39,7 +39,7 @@ class MedicineManager {
         administrationMethod,
         mlsPerPacket
       );
-    } else if ((administrationMethod = "topical")) {
+    } else if (administrationMethod === "topical") {
       medicine = new TopicalMedicine(
         name,
         manufacturer,
@@ -59,3 +59,5 @@ class MedicineManager {
     localStorage.setItem("medicine-collection", JSON.stringify(collection));
   }
 }
+
+export default MedicineManager;

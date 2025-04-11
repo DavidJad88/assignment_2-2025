@@ -1,6 +1,6 @@
 import BaseMedicine from "./baseMedicine";
 
-class InjectionMedicine {
+class InjectionMedicine extends BaseMedicine {
   constructor(
     name,
     manufacturer,

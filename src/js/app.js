@@ -1,6 +1,8 @@
 //imports
 
 import Ui from "./ui";
+import MedicineManager from "./medicineManager";
+import Validation from "./validation";
 
 //CALLING ELEMENTS
 
@@ -9,14 +11,14 @@ const openAddModalbutton = document.querySelector(".add-medicine-button");
 const closeAddModalButton = document.querySelector(".close-form-button");
 const formModal = document.querySelector(".form-modal");
 const administrationContainer = document.querySelector(
-  ".form-administration-container"
+  ".form__administration-container"
 );
 
 const formIngestionContainer = document.querySelector(
   ".administration--ingestion"
 );
 const formInjectionTopicalContainer = document.querySelector(
-  "administration--injection-topical"
+  ".administration--injection-topical"
 );
 
 //FORM & INPUT ELEMENTS
@@ -80,4 +82,69 @@ document.addEventListener("DOMContentLoaded", () => {
   Ui.closeDeleteModal();
 });
 
-form.addEventListener("submit", (e) => {});
+medicineAdministrationRadios.forEach((radio) => {
+  radio.addEventListener("change", () => {
+    const selectedRadio = document.querySelector(
+      'input[name="administration"]:checked'
+    )?.value;
+    Ui.toggleAdministrationTypeFields(
+      administrationContainer,
+      formIngestionContainer,
+      formInjectionTopicalContainer,
+      selectedRadio,
+      mlPerContainer,
+      amountPerPacket
+    );
+  });
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Collect data
+  const selectedSymptoms = Array.from(medicineSymptomsCheckboxes)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.value);
+  const selectedAdministration = Array.from(medicineAdministrationRadios).find(
+    (radio) => radio.checked
+  )?.value;
+
+  // Dynamic fields
+  const pillsPerPacket =
+    selectedAdministration === "ingestion" ? amountPerPacket.value : null;
+  const mlsPerContainer =
+    selectedAdministration === "injection" ||
+    selectedAdministration === "topical"
+      ? mlPerContainer.value
+      : null;
+
+  // Form data object
+  const formData = {
+    name: medicineName.value.trim(),
+    manufacturer: medicineManufacturer.value.trim(),
+    expirationDate: medicineExirationDate.value,
+    quantity: medicineQuantity.value,
+    symptoms: selectedSymptoms,
+    administrationMethod: selectedAdministration,
+    pillsPerPacket: pillsPerPacket,
+    mlsPerContainer: mlsPerContainer,
+  };
+
+  // Validate
+  const isValid = Validation.validateForm(formData, formValidationMessage);
+
+  if (isValid) {
+    MedicineManager.addMedicine(
+      formData.name,
+      formData.manufacturer,
+      formData.expirationDate,
+      formData.quantity,
+      formData.symptoms,
+      formData.administrationMethod,
+      formData.mlsPerContainer,
+      formData.pillsPerPacket
+    );
+    formModal.classList.remove("form-modal--display");
+    form.reset();
+  }
+});
