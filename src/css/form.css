@@ -34,12 +34,29 @@
   width: 100%;
   gap: var(--spacing-small);
 }
+.form__group--symptoms {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__group--symptoms-fieldset {
+  display: flex;
+  flex-direction: column;
+}
 
 .symptoms-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-small);
   padding: var(--spacing-small);
+}
+
+.symptoms-grid__item {
+  display: flex;
+  gap: var(--spacing-x-small);
+  justify-content: center;
+  align-items: center;
 }
 
 .form__administration--radios {
@@ -50,6 +67,7 @@
 .form__administration--radios div {
   display: flex;
   gap: var(--spacing-small);
+  text-align: center;
 }
 
 .form__administration-container {
