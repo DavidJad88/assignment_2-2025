@@ -34,6 +34,12 @@ class Ui {
       formSubmitButton.textContent = "Add Medicine";
     });
   }
+
+  static closeDeleteModal(deleteModal, cancelDeleteButton) {
+    cancelDeleteButton.addEventListener("click", () => {
+      deleteModal.classList.remove("delete-modal--display");
+    });
+  }
 }
 
 export default Ui;

@@ -2,9 +2,9 @@
 
 import Ui from "./ui";
 
-//calling elements
+//CALLING ELEMENTS
 
-//ui elements
+//UI ELEMENTS
 const openAddModalbutton = document.querySelector(".add-medicine-button");
 const closeAddModalButton = document.querySelector(".close-form-button");
 const formModal = document.querySelector(".form-modal");
@@ -19,7 +19,7 @@ const formInjectionTopicalContainer = document.querySelector(
   "administration--injection-topical"
 );
 
-//form & input elements
+//FORM & INPUT ELEMENTS
 
 const form = document.querySelector(".form");
 const medicineName = document.querySelector(".form__medicine-name-input");
@@ -42,21 +42,26 @@ const medicineAdministrationRadios = document.querySelectorAll(
 );
 console.log(medicineAdministrationRadios);
 
-//dynamic form fields
+//DYNAMIC FORM FIELDS
 
-//ml fields
+//ML FIELDS
 const mlPerContainer = document.querySelector(
   ".injection-or-topical-quantities"
 );
 
-//amount per packet fields
+//QUANTITY PER PACKET FIELDS
 const amountPerPacket = document.querySelector(".ingestion-quantities-input");
 
-//submit and verification elements
+//SUBMIT & VERIFICATION ELEMENTS
 const formSubmitButton = document.querySelector(".form-submit-button");
 const formValidationMessage = document.querySelector(
   ".form__validation-message"
 );
+
+//DELETE MODAL
+
+const deleteModal = document.querySelector(".delete-modal");
+const cancelDeleteButton = document.querySelector(".camcel-delete-button");
 
 //EVENT LISTENERS
 
@@ -77,4 +82,5 @@ document.addEventListener("DOMContentLoaded", () => {
     formSubmitButton,
     formValidationMessage
   );
+  Ui.closeDeleteModal(deleteModal, cancelDeleteButton);
 });
