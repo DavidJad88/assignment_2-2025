@@ -147,5 +147,6 @@ form.addEventListener("submit", (e) => {
     );
     formModal.classList.remove("form-modal--display");
     form.reset();
+    Ui.renderMedicines();
   }
 });

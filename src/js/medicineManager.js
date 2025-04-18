@@ -55,6 +55,15 @@ class MedicineManager {
     console.log(this.medicineCollection);
   }
 
+  static deleteMedicine(id) {
+    MedicineManager.medicineCollection =
+      MedicineManager.medicineCollection.filter((medicine) => {
+        return medicine.id !== id;
+      });
+    MedicineManager.storeMedicines(MedicineManager.medicineCollection);
+    Ui.renderMedicines();
+  }
+
   static storeMedicines(collection) {
     localStorage.setItem("medicine-collection", JSON.stringify(collection));
   }

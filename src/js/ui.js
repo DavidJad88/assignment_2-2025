@@ -1,3 +1,5 @@
+import MedicineManager from "./medicineManager";
+
 class Ui {
   static currentEditId = null;
 
@@ -59,6 +61,21 @@ class Ui {
     });
   }
 
+  static displayDeleteModal(id, medicineName) {
+    const deleteModal = document.querySelector(".delete-modal");
+    deleteModal.classList.add("delete-modal--display");
+    const deleteMessage = document.querySelector(".delete-message");
+    deleteMessage.textContent = `Are you sure you want to delete ${medicineName} from the inventory?`;
+    const confirmDeleteButton = document.querySelector(
+      ".confirm-delete-button"
+    );
+
+    confirmDeleteButton.addEventListener("click", () => {
+      MedicineManager.deleteMedicine(id);
+      deleteModal.classList.remove("delete-modal--display");
+    });
+  }
+
   static closeDeleteModal() {
     const deleteModal = document.querySelector(".delete-modal");
     const cancelDeleteButton = document.querySelector(".cancel-delete-button");
@@ -98,7 +115,7 @@ class Ui {
         categoryIcon.classList.add("fa-syringe");
         categoryIcon.classList.add("fa-flip-horizontal");
       } else if (medicine.administrationMethod === "topical") {
-        categoryIcon.classList.add("fa-solid fa-droplet");
+        categoryIcon.classList.add("fa-solid");
         categoryIcon.classList.add("fa-droplet");
       }
 
@@ -161,7 +178,7 @@ class Ui {
       const administrationContainer = document.createElement("div");
       administrationContainer.classList.add("list-iten__subcontainer");
       const administrationHeading = document.createElement("h3");
-      administrationHeading.textContent = "Method of Administration";
+      administrationHeading.textContent = "Method of Administration:";
       const administrationDescription = document.createElement("p");
       administrationDescription.textContent = medicine.administrationMethod;
 
@@ -239,7 +256,7 @@ class Ui {
         Ui.populateEditForm(medicine.id);
       });
       deleteButton.addEventListener("click", () => {
-        Ui.displayDeleteModal();
+        Ui.displayDeleteModal(medicine.id, medicine.name);
       });
     });
   }
