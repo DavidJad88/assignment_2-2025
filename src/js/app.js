@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     formValidationMessage
   );
   Ui.closeDeleteModal();
+  Ui.renderMedicines();
 });
 
 medicineAdministrationRadios.forEach((radio) => {
