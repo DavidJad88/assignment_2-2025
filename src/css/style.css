@@ -21,11 +21,13 @@ main {
 }
 
 .add-button-container {
-  position: absolute;
+  position: fixed;
   width: 48px;
   height: 48px;
   right: var(--spacing-large);
-  bottom: var(--spacing-large);
+  top: 0;
+  margin-top: var(--spacing-large);
+  z-index: 1000;
 }
 
 .add-medicine-button {

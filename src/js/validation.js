@@ -29,7 +29,7 @@ class Validation {
 
     // Display errors
     if (errors.length > 0) {
-      formValidationMessage.textContent = errors.join(", ");
+      formValidationMessage.textContent = errors[0];
       formValidationMessage.style.display = "block";
       return false;
     }

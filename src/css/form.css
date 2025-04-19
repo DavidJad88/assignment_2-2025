@@ -91,6 +91,10 @@
   display: none;
 }
 
+.form__validation-message {
+  color: var(--text-color-error);
+}
+
 .form__tools-container {
   display: flex;
 

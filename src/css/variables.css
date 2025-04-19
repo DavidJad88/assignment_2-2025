@@ -3,6 +3,7 @@
   --color-background-light: #ffffff;
   --color-background-medium: #b4d7f5;
   --color-background-dark: #040f1a;
+  --color-background-list: #b4d7f568;
 
   --button-color: hsl(35, 21%, 90%);
   --button-color-disabled: #434343;
@@ -11,6 +12,7 @@
 
   --text-color-light: #edf5fc;
   --text-color-dark: #040f1a;
+  --text-color-error: #d85a5a;
 
   --validation-border: #f6510b;
   --text-validation-message: #f6510b;

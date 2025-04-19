@@ -52,7 +52,6 @@ class MedicineManager {
     }
     MedicineManager.medicineCollection.push(medicine);
     this.storeMedicines(this.medicineCollection);
-    console.log(this.medicineCollection);
   }
 
   static editMedicine(

@@ -90,7 +90,7 @@ class Ui {
     const medicineManufacturer = document.querySelector(
       ".form__manufacturer-input"
     );
-    const medicineExirationDate = document.querySelector(
+    const medicineExpirationDate = document.querySelector(
       ".form__expiration-date-input"
     );
     const medicineQuantity = document.querySelector(
@@ -125,7 +125,11 @@ class Ui {
 
     medicineName.value = medicineToEdit.name;
     medicineManufacturer.value = medicineToEdit.manufacturer;
-    medicineExirationDate.value = medicineToEdit.expirationDate;
+
+    const expirationDate = new Date(medicineToEdit.expirationDate);
+    const formattedExpirationDate = expirationDate.toISOString().split("T")[0];
+    medicineExpirationDate.value = formattedExpirationDate;
+
     medicineQuantity.value = medicineToEdit.quantity;
 
     medicineSymptomsCheckboxes.forEach((checkbox) => {
@@ -284,21 +288,25 @@ class Ui {
       const administrationContainer = document.createElement("div");
       administrationContainer.classList.add("list-iten__subcontainer");
       const administrationHeading = document.createElement("h3");
-      administrationHeading.textContent = "Method of Administration:";
+      administrationHeading.textContent = "Administration:";
       const administrationDescription = document.createElement("p");
       administrationDescription.textContent = Ui.capitalizeFirstLetter(
         medicine.administrationMethod
       );
 
       const symptomsContainer = document.createElement("div");
-      symptomsContainer.classList.add("list-iten__subcontainer");
+      symptomsContainer.classList.add("list-iten__subcontainer--symptoms");
       const symptomsHeading = document.createElement("h3");
+      symptomsHeading.classList.add("symptom-heading");
       symptomsHeading.textContent = "Treats symptoms:";
       symptomsContainer.append(symptomsHeading);
+      const symptomsDisplayContainer = document.createElement("div");
+      symptomsDisplayContainer.classList.add("symptoms--display-container");
+      symptomsContainer.append(symptomsDisplayContainer);
       medicine.symptoms.forEach((symptom) => {
         const symptomDescription = document.createElement("p");
         symptomDescription.textContent = Ui.capitalizeFirstLetter(symptom);
-        symptomsContainer.append(symptomDescription);
+        symptomsDisplayContainer.append(symptomDescription);
       });
 
       const packetContainer = document.createElement("div");

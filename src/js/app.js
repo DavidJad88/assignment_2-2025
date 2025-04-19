@@ -28,7 +28,7 @@ const medicineName = document.querySelector(".form__medicine-name-input");
 const medicineManufacturer = document.querySelector(
   ".form__manufacturer-input"
 );
-const medicineExirationDate = document.querySelector(
+const medicineExpirationDate = document.querySelector(
   ".form__expiration-date-input"
 );
 const medicineQuantity = document.querySelector(
@@ -121,7 +121,7 @@ form.addEventListener("submit", (e) => {
   const formData = {
     name: medicineName.value.trim(),
     manufacturer: medicineManufacturer.value.trim(),
-    expirationDate: medicineExirationDate.value,
+    expirationDate: medicineExpirationDate.value,
     quantity: medicineQuantity.value,
     symptoms: selectedSymptoms,
     administrationMethod: selectedAdministration,
