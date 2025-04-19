@@ -12,7 +12,7 @@ class BaseMedicine {
     this.id = uuidv4();
     this.name = name;
     this.manufacturer = manufacturer;
-    this.expirationDate = expirationDate;
+    this.expirationDate = new Date(expirationDate).toISOString();
     this.quantity = quantity;
     this.symptoms = symptoms;
     this.administrationMethod = administrationMethod;

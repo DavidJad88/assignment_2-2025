@@ -3,6 +3,10 @@ import MedicineManager from "./medicineManager";
 class Ui {
   static currentEditId = null;
 
+  static capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   static toggleAdministrationTypeFields(
     administrationContainer,
     formIngestionContainer,
@@ -252,8 +256,19 @@ class Ui {
       expirationDateContainer.classList.add("list-iten__subcontainer");
       const expirationDateHeading = document.createElement("h3");
       expirationDateHeading.textContent = "Expiration Date:";
+
+      const expirationDate = new Date(medicine.expirationDate);
+      const formattedExpirationDate = expirationDate.toLocaleDateString(
+        "en-US",
+        {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        }
+      );
+
       const expirationDateDescription = document.createElement("p");
-      expirationDateDescription.textContent = medicine.expirationDate;
+      expirationDateDescription.textContent = formattedExpirationDate;
 
       const quantityContainer = document.createElement("div");
       quantityContainer.classList.add("list-iten__subcontainer");
@@ -271,7 +286,9 @@ class Ui {
       const administrationHeading = document.createElement("h3");
       administrationHeading.textContent = "Method of Administration:";
       const administrationDescription = document.createElement("p");
-      administrationDescription.textContent = medicine.administrationMethod;
+      administrationDescription.textContent = Ui.capitalizeFirstLetter(
+        medicine.administrationMethod
+      );
 
       const symptomsContainer = document.createElement("div");
       symptomsContainer.classList.add("list-iten__subcontainer");
@@ -280,7 +297,7 @@ class Ui {
       symptomsContainer.append(symptomsHeading);
       medicine.symptoms.forEach((symptom) => {
         const symptomDescription = document.createElement("p");
-        symptomDescription.textContent = symptom;
+        symptomDescription.textContent = Ui.capitalizeFirstLetter(symptom);
         symptomsContainer.append(symptomDescription);
       });
 
