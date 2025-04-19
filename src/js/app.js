@@ -37,12 +37,10 @@ const medicineQuantity = document.querySelector(
 const medicineSymptomsCheckboxes = document.querySelectorAll(
   'input[name="symptoms"]'
 );
-console.log(medicineSymptomsCheckboxes);
 
 const medicineAdministrationRadios = document.querySelectorAll(
   'input[name="administration"]'
 );
-console.log(medicineAdministrationRadios);
 
 //DYNAMIC FORM FIELDS
 
@@ -135,18 +133,35 @@ form.addEventListener("submit", (e) => {
   const isValid = Validation.validateForm(formData, formValidationMessage);
 
   if (isValid) {
-    MedicineManager.addMedicine(
-      formData.name,
-      formData.manufacturer,
-      formData.expirationDate,
-      formData.quantity,
-      formData.symptoms,
-      formData.administrationMethod,
-      formData.mlsPerContainer,
-      formData.pillsPerPacket
-    );
-    formModal.classList.remove("form-modal--display");
-    form.reset();
+    if (!Ui.currentEditId) {
+      MedicineManager.addMedicine(
+        formData.name,
+        formData.manufacturer,
+        formData.expirationDate,
+        formData.quantity,
+        formData.symptoms,
+        formData.administrationMethod,
+        formData.mlsPerContainer,
+        formData.pillsPerPacket
+      );
+      formModal.classList.remove("form-modal--display");
+    } else {
+      MedicineManager.editMedicine(
+        Ui.currentEditId,
+        formData.name,
+        formData.manufacturer,
+        formData.expirationDate,
+        formData.quantity,
+        formData.symptoms,
+        formData.administrationMethod,
+        formData.mlsPerContainer,
+        formData.pillsPerPacket
+      );
+      Ui.currentEditId = null;
+      formModal.classList.remove("form-modal--display");
+    }
     Ui.renderMedicines();
+    form.reset();
+    formSubmitButton.textContent = "Add Medicine";
   }
 });

@@ -30,7 +30,6 @@ class Ui {
   static displayAddModal(
     openAddModalbutton,
     formModal,
-
     administrationContainer,
     formIngestionContainer,
     formInjectionTopicalContainer,
@@ -42,6 +41,7 @@ class Ui {
       formIngestionContainer.style.display = "none";
       formInjectionTopicalContainer.style.display = "none";
       formSubmitButton.textcontent = "Add Medicine";
+      Ui.currentEditId = null;
     });
   }
 
@@ -59,6 +59,97 @@ class Ui {
       Ui.currentEditId = null;
       formSubmitButton.textContent = "Add Medicine";
     });
+  }
+
+  static displayEditModal() {
+    const formModal = document.querySelector(".form-modal");
+    const formSubmitButton = document.querySelector(".form-submit-button");
+    formModal.classList.add("form-modal--display");
+    formSubmitButton.textContent = "Confirm Edit";
+  }
+
+  static populateEditForm(id) {
+    // calling containers
+    const administrationContainer = document.querySelector(
+      ".form__administration-container"
+    );
+
+    const formIngestionContainer = document.querySelector(
+      ".administration--ingestion"
+    );
+    const formInjectionTopicalContainer = document.querySelector(
+      ".administration--injection-topical"
+    );
+
+    //calling input fields
+    const medicineName = document.querySelector(".form__medicine-name-input");
+    const medicineManufacturer = document.querySelector(
+      ".form__manufacturer-input"
+    );
+    const medicineExirationDate = document.querySelector(
+      ".form__expiration-date-input"
+    );
+    const medicineQuantity = document.querySelector(
+      ".form__medicine-quantity-input"
+    );
+    const medicineSymptomsCheckboxes = document.querySelectorAll(
+      'input[name="symptoms"]'
+    );
+
+    const medicineAdministrationRadios = document.querySelectorAll(
+      'input[name="administration"]'
+    );
+
+    const mlPerContainer = document.querySelector(
+      ".injection-or-topical-quantities"
+    );
+
+    const amountPerPacket = document.querySelector(
+      ".ingestion-quantities-input"
+    );
+
+    //getting collection and medicine to edit
+    const medicinesCollection = JSON.parse(
+      localStorage.getItem("medicine-collection")
+    );
+
+    const medicineToEdit = medicinesCollection.find(
+      (medicine) => medicine.id === id
+    );
+
+    //populating edit form
+
+    medicineName.value = medicineToEdit.name;
+    medicineManufacturer.value = medicineToEdit.manufacturer;
+    medicineExirationDate.value = medicineToEdit.expirationDate;
+    medicineQuantity.value = medicineToEdit.quantity;
+
+    medicineSymptomsCheckboxes.forEach((checkbox) => {
+      checkbox.checked = medicineToEdit.symptoms.includes(checkbox.value);
+    });
+
+    administrationContainer.style.display = "block";
+
+    medicineAdministrationRadios.forEach((radio) => {
+      if (radio.value === medicineToEdit.administrationMethod) {
+        radio.checked = true;
+      }
+    });
+
+    if (
+      medicineToEdit.administrationMethod === "injection" ||
+      medicineToEdit.administrationMethod === "topical"
+    ) {
+      formInjectionTopicalContainer.style.display = "block";
+      formIngestionContainer.style.display = "none";
+      mlPerContainer.value = medicineToEdit.mlsPerPacket;
+    } else if (medicineToEdit.administrationMethod === "ingestion") {
+      formIngestionContainer.style.display = "block";
+      formInjectionTopicalContainer.style.display = "none";
+      amountPerPacket.value = medicineToEdit.pillsPerPacket;
+    }
+
+    Ui.currentEditId = id;
   }
 
   static displayDeleteModal(id, medicineName) {

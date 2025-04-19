@@ -55,6 +55,50 @@ class MedicineManager {
     console.log(this.medicineCollection);
   }
 
+  static editMedicine(
+    id,
+    name,
+    manufacturer,
+    expirationDate,
+    quantity,
+    symptoms,
+    administrationMethod,
+    mlsPerContainer,
+    pillsPerPacket
+  ) {
+    const latestCollection = JSON.parse(
+      localStorage.getItem("medicine-collection")
+    );
+
+    const medicineIndex = latestCollection.findIndex(
+      (medicine) => medicine.id === id
+    );
+
+    if (medicineIndex !== -1) {
+      const updatedMedicine = {
+        id,
+        name,
+        manufacturer,
+        expirationDate,
+        quantity,
+        symptoms,
+        administrationMethod,
+      };
+
+      if (administrationMethod === "ingestion") {
+        updatedMedicine.pillsPerPacket = pillsPerPacket;
+      } else if (
+        administrationMethod === "injection" ||
+        administrationMethod === "topical"
+      ) {
+        updatedMedicine.mlsPerContainer = mlsPerContainer;
+      }
+
+      latestCollection[medicineIndex] = updatedMedicine;
+    }
+    MedicineManager.storeMedicines(latestCollection);
+  }
+
   static deleteMedicine(id) {
     MedicineManager.medicineCollection =
       MedicineManager.medicineCollection.filter((medicine) => {
