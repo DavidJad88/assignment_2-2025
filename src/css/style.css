@@ -11,6 +11,7 @@ body {
 main {
   height: auto;
   width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,11 +22,11 @@ main {
 }
 
 .add-button-container {
-  position: fixed;
+  position: absolute;
   width: 48px;
   height: 48px;
   right: var(--spacing-large);
-  top: 0;
+  bottom: var(--spacing-large);
   margin-top: var(--spacing-large);
   z-index: 1000;
 }
@@ -46,4 +47,10 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    padding: var(--spacing-x-small);
+  }
 }

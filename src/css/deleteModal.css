@@ -16,7 +16,8 @@
 }
 
 .delete-container {
-  width: 50%;
+  width: 100%;
+  max-width: 500px;
   height: 20%;
   display: flex;
   flex-direction: column;

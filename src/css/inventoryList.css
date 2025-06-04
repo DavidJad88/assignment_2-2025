@@ -1,5 +1,5 @@
 .inventory-list {
-  width: 60%;
+  width: 100%;
   max-width: 700px;
 
   height: 100%;
@@ -13,7 +13,8 @@
 .list-item {
   width: 100%;
   min-width: 350px;
-  height: 300px;
+  min-height: 300px;
+  height: auto;
   display: flex;
   background-color: var(--color-background-light);
   /* gap: var(--spacing-small); */
