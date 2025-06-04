@@ -26,13 +26,13 @@ main {
   width: 48px;
   height: 48px;
   right: var(--spacing-large);
-  bottom: var(--spacing-large);
-  margin-top: var(--spacing-large);
+  top: var(--spacing-large);
+
   z-index: 1000;
 }
 
 .add-medicine-button {
-  font-size: 48px;
+  font-size: 32px;
   background: none;
   border: none;
 }
