@@ -26,13 +26,13 @@ main {
   width: 48px;
   height: 48px;
   right: var(--spacing-large);
-  top: var(--spacing-large);
-
+  bottom: var(--spacing-large);
+  margin-top: var(--spacing-large);
   z-index: 1000;
 }
 
 .add-medicine-button {
-  font-size: 32px;
+  font-size: 48px;
   background: none;
   border: none;
 }
@@ -49,8 +49,21 @@ a {
   text-decoration: none;
 }
 
+@media screen and (max-width: 900px) {
+  main {
+    padding: var(--spacing-x-large) var(--spacing-x-small);
+  }
+  .add-button-container {
+    top: -24px;
+    width: 32px;
+    height: 32px;
+  }
+  .add-medicine-button {
+    font-size: 32px;
+  }
+}
 @media screen and (max-width: 500px) {
   main {
-    padding: var(--spacing-x-small);
+    padding: var(--spacing-x-large) var(--spacing-x-small);
   }
 }
