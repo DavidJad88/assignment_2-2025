@@ -24,6 +24,9 @@ header {
   justify-content: center;
   align-items: center;
 }
+.header__heading-container h1 {
+  font-size: var(--font-size-large);
+}
 
 /* .add-button-container {
   height: 100%;
